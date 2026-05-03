@@ -50,5 +50,13 @@ class Config:
     def briefing_minute(self) -> int:
         return int(self.briefing_time.split(":")[1])
 
+    def validate(self) -> None:
+        missing = []
+        for key in ["openweather_api_key", "news_api_key", "smtp_user", "smtp_password", "email_recipient"]:
+            if not getattr(self, key, None):
+                missing.append(key.upper())
+        if missing:
+            raise EnvironmentError(f"Missing required env vars: {', '.join(missing)}")
+
 
 cfg = Config()
