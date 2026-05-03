@@ -1,0 +1,13 @@
+.env
+*.json
+!package.json
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.log
+.idea/
+.vscode/
+dist/
+build/
