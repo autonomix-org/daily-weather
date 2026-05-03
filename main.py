@@ -11,6 +11,8 @@ import sys
 from utils.logger import get_logger
 from agents.briefing_agent import BriefingAgent
 from scheduler.cron import start_scheduler
+from config import cfg
+cfg.validate()
 
 logger = get_logger(__name__)
 
