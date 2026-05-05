@@ -50,6 +50,7 @@ class WeatherService:
         self._city = cfg.openweather_city
         self._units = cfg.openweather_units
 
+    @retry(times=3, delay=2)
     def fetch(self) -> WeatherData:
         params = {"q": self._city, "appid": self._key, "units": self._units}
 

@@ -33,6 +33,7 @@ class NewsService:
         self._country = cfg.news_country
         self._max = cfg.news_max_articles
 
+    @retry(times=3, delay=2)
     def fetch(self) -> list[Article]:
         """Fetch top articles across all configured topics (deduplicated)."""
         seen_urls: set[str] = set()
